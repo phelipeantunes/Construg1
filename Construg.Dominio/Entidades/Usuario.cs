@@ -1,6 +1,8 @@
-﻿namespace Construg.Dominio.Entidades
+﻿using System;
+
+namespace Construg.Dominio.Entidades
 {
-    public abstract class Usuario
+    public abstract class Usuario : Entidade
     {
         public int id { get; set; }
 
@@ -11,5 +13,16 @@
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
 
+        public override void Validate()
+        {
+            if (string.IsNullOrEmpty(Email))
+                MensagemValidacao("Email nao informado");
+
+            if (string.IsNullOrEmpty(Senha))
+                MensagemValidacao("Senha nao informada");
+                }
+        
+
+        protected abstract void MensagemValidacao(string v);
     }
 }

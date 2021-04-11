@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Construg.Dominio.Entidades
 {
-   public class Orcamento
+   public class Orcamento : Entidade
     {
         public int Id { get; set; }
         public int IdService { get; set; }
@@ -18,5 +19,9 @@ namespace Construg.Dominio.Entidades
         //Um usuario pode ter um ou mais itens adicionados no orçamento
         public ICollection<Service> Servicos { get; set; }
 
+        public override void Validate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
